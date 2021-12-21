@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CaseCovid;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Cache;
 
 class CovidController extends Controller
 {
@@ -14,8 +14,8 @@ class CovidController extends Controller
     {
         $this->date = $request->day.'/'.$request->month;
 
-        $cases = ($this->date != '/') ? CaseCovid::where('date', $this->date)->get() : CaseCovid::all();
-    
+        $cases = ($this->date != '/') ? CaseCovid::where('date', $this->date)->get() : Cache::get('allData');
+        
         return response()->json([
             'message' => __('controller.succeed'),
             'data' => $cases,

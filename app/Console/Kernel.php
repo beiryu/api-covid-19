@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(new GetLocationJob)->everyMinute();
 
         $schedule->command('covid:queue-active 60 1')->everyMinute();
+        $schedule->command('covid:cache')->hourly();
     }
 
     /**
