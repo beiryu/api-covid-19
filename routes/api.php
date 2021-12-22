@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/covid-by-day/{day?}/{month?}', [CovidController::class, 'covidByDay']);
-Route::get('/covid-by-location/{code}', [CovidController::class, 'covidByLocation']);
+Route::get('/covid-by-location/{province}/{day?}/{month?}', [CovidController::class, 'covidByLocation']);

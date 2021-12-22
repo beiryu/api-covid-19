@@ -1,18 +1,28 @@
-`[2021-12-21T09:38:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
-[2021-12-21T09:38:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
-[2021-12-21T09:38:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 >> './log.txt' 2>&1
-`[2021-12-21T09:39:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
-[2021-12-21T09:39:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
-[2021-12-21T09:39:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 >> './log.txt' 2>&1
-`[2021-12-21T09:40:02+00:00] Running scheduled command: App\Jobs\GetCasesJob
-[2021-12-21T09:40:02+00:00] Running scheduled command: App\Jobs\GetLocationJob
-[2021-12-21T09:40:02+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 >> './log.txt' 2>&1
-`[2021-12-21T09:41:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
-[2021-12-21T09:41:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
-[2021-12-21T09:41:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 >> './log.txt' 2>&1
-`[2021-12-21T09:42:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
-[2021-12-21T09:42:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
-[2021-12-21T09:42:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 >> './log.txt' 2>&1
-`[2021-12-21T09:43:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
-[2021-12-21T09:43:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
-[2021-12-21T09:43:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 >> './log.txt' 2>&1
+`[2021-12-22T01:16:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:16:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:16:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+[2021-12-22T01:16:05+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:cache > '/dev/null' 2>&1
+`[2021-12-22T01:17:02+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:17:02+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:17:02+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+[2021-12-22T01:17:06+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:cache > '/dev/null' 2>&1
+`[2021-12-22T01:18:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:18:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:18:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+[2021-12-22T01:18:05+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:cache > '/dev/null' 2>&1
+`[2021-12-22T01:19:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:19:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:19:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+[2021-12-22T01:19:05+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:cache > '/dev/null' 2>&1
+`[2021-12-22T01:20:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:20:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:20:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+`[2021-12-22T01:21:02+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:21:02+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:21:02+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+`[2021-12-22T01:22:01+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:22:01+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:22:01+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1
+`[2021-12-22T01:23:02+00:00] Running scheduled command: App\Jobs\GetCasesJob
+[2021-12-22T01:23:02+00:00] Running scheduled command: App\Jobs\GetLocationJob
+[2021-12-22T01:23:02+00:00] Running scheduled command: '/usr/bin/php8.0' 'artisan' covid:queue-active 60 1 > '/dev/null' 2>&1

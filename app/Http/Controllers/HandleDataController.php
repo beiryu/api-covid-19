@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CaseCovid;
-use Illuminate\Http\Request;
-use Illuminate\Http\Client\Pool;
+use App\Models\LocationCovid;
 use Illuminate\Support\Facades\Http;
 
 class HandleDataController extends Controller
@@ -19,7 +18,7 @@ class HandleDataController extends Controller
 
         if ($responses->ok())
         {
-            $body = $this->handleResult($responses->body());
+            $body = $this->handle($responses->body());
 
             foreach( $body as $key => $value )
             {
@@ -31,7 +30,7 @@ class HandleDataController extends Controller
                     {
                         $case = new CaseCovid();
                     
-                        $case->fill(array_combine( ['date', 'today_cases', 'total_cases'], $result));
+                        $case->fill(array_combine( $case->get(), $result));
                         
                         $case->save();
                     }
@@ -45,13 +44,27 @@ class HandleDataController extends Controller
 
     public function saveLocationCovid()
     {
-        echo 'this is location covid cases';
+        $responses = Http::get($this->preUrl.'location');
 
+        if ($responses->ok())
+        {
+            $body = $this->handleLocation($responses->body());
+            
+            foreach( $body as $value )
+            {
+                $result = array_slice($value, 0, count($value) - 7);
+
+                $location = new LocationCovid();
+
+                $location->fill(array_combine($location->getProvince(), $result));
+                
+                $location->save();
+            }
+        }
         return 1;
-
     }
     
-    protected function handleResult($data)
+    protected function handle($data)
     {
         preg_match_all('/\"(\w.*?)?\"/i', $data, $matches);
 
@@ -60,5 +73,24 @@ class HandleDataController extends Controller
         };
 
         return array_map($func, $matches[0]);
+    }
+
+    protected function handleLocation($data)
+    {
+        $x = $this->handle($data);
+
+        $temp = (array_chunk(array_slice($x, 134), 70));
+        foreach($temp as $i => $arr)
+        {
+            foreach($arr as $j => $e)
+            {
+                if ($e == "")
+                {
+                    $temp[$i][$j] = 0;
+                }
+            }
+        }
+
+        return $temp;
     }
 }

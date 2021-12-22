@@ -9,5 +9,13 @@ class CaseCovid extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'today_cases', 'total_cases'];
+    protected $fillable = ['date', 
+                           'today_cases', 
+                           'total_cases'
+    ];
+
+    public function get()
+    {
+        return $this->fillable;
+    }
 }
