@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\CaseCovid;
 use App\Models\LocationCovid;
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class HandleDataController extends Controller
 {
-    
+
     protected $preUrl = 'https://vnexpress.net/microservice/sheet/type/covid19_2021_by_';
 
 
@@ -31,8 +32,8 @@ class HandleDataController extends Controller
                         $case = new CaseCovid();
                     
                         $case->fill(array_combine( $case->get(), $result));
-
-                        if (!CaseCovid::where('date', '=', $case->date)->where('today_cases', '!=', 0)->exists()) {
+                        
+                        if (!CaseCovid::where('date', '=', $case->date)->exists() || $case->date == $this->today() ) {
                             $case->save();    
                         }
                     }
@@ -60,7 +61,9 @@ class HandleDataController extends Controller
 
                 $location->fill(array_combine($location->getProvince(), $result));
                 
-                $location->save();
+                if (!LocationCovid::where('date', '=', $location->date)->exists() || $location->date == $this->today() ) {
+                    $location->save();    
+                }
             }
         }
         return 1;
@@ -94,5 +97,11 @@ class HandleDataController extends Controller
         }
 
         return $temp;
+    }
+
+    public function today()
+    {
+        $time = Carbon::now();
+        return $time->day.'/'.$time->month;
     }
 }

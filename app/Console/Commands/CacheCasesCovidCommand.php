@@ -39,7 +39,7 @@ class CacheCasesCovidCommand extends Command
      */
     public function handle()
     {
-         Cache::rememberForever('allData', function(){
+        Cache::rememberForever('allData', function(){
             return CaseCovid::all();
         });
         return 0;
