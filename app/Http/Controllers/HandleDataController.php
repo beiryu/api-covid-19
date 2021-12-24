@@ -31,8 +31,10 @@ class HandleDataController extends Controller
                         $case = new CaseCovid();
                     
                         $case->fill(array_combine( $case->get(), $result));
-                        
-                        $case->save();
+
+                        if (!CaseCovid::where('date', '=', $case->date)->where('today_cases', '!=', 0)->exists()) {
+                            $case->save();    
+                        }
                     }
                 }
             }
