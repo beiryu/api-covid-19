@@ -21,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('/cases', [HandleDataController::class, 'saveCasesCovid']);
 Route::get('/location', [HandleDataController::class, 'saveLocationCovid']);
+Route::get('/test', [CovidController::class, 'test']);

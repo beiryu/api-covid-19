@@ -2,45 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CaseCovid;
-use App\Models\LocationCovid;
+use App\Http\Requests\CaseCovidRequest;
+use App\Http\Requests\LocationCovidRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class CovidController extends Controller
 {
-    protected $date;
-
-    public function __construct(Request $request)
+    public function covidByDay(CaseCovidRequest $request)
     {
-        $this->date = $request->day.'/'.$request->month;
-    }
-
-    public function covidByDay()
-    {
-        $cases = ($this->date != '/') ? CaseCovid::where('date', $this->date)->get() : Cache::get('allData');
-        
+        $case = DB::table('case_covids')->whereDate('created_at', '=', $request->date)->get();
         return response()->json([
             'message' => __('controller.succeed'),
-            'data' => $cases,
+            'data' => $case,
         ], 200);
     }
 
-    public function covidByLocation(Request $request)
+    public function covidByLocation(LocationCovidRequest $request)
     {
-        $query = DB::table('location_covids');
-        
-        $query->select('date', $request->province);
-
-        if ($this->date != '/')
-        {
-            $query->where('date', $this->date);
-        }
-
+        $location = DB::table('location_covids')->whereDate('created_at', '=', $request->date)->where('code', $request->code)->get();
         return response()->json([
             'message' => __('controller.succeed'),
-            'data' => $query->get(),
+            'data' => $location,
         ], 200);
     }
 }

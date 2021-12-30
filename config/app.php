@@ -167,7 +167,7 @@ return [
          */
         
         Weidner\Goutte\GoutteServiceProvider::class,
-
+        
         /*
          * Application Service Providers...
          */
