@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CaseCovidRequest;
 use App\Http\Requests\LocationCovidRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CovidController extends Controller

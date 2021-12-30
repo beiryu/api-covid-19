@@ -17,7 +17,7 @@ class CaseCovid extends Model
         return $this->fillable;
     }
 
-    public function getData()
+    public function get()
     {
         $client = Client::createChromeClient();
         $client->request('GET', 'https://vnexpress.net/covid-19/covid-19-viet-nam');

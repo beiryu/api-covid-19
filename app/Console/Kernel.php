@@ -19,10 +19,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->job(new GetCasesJob)->everyMinute();
         $schedule->job(new GetLocationJob)->everyMinute();
-        // ..
-        // $schedule->command('covid:queue-active 60 1')->everyMinute()->appendOutputTo('./log.txt');
         $schedule->command('covid:queue-active 60 1')->everyMinute();
-
         $schedule->command('covid:cache')->hourly();
     }
 

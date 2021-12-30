@@ -2,13 +2,14 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\HandleDataController;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\Models\LocationCovid;
+use Symfony\Component\Panther\Client;
 
 class GetLocationJob implements ShouldQueue
 {
@@ -31,7 +32,16 @@ class GetLocationJob implements ShouldQueue
      */
     public function handle()
     {
-        $job = new HandleDataController;
-        $job->saveLocationCovid();
+        $client = Client::createChromeClient();
+        $client->request('GET', 'https://vnexpress.net/covid-19/covid-19-viet-nam');
+        $client->executeScript("document.querySelectorAll('.xem-them')[1].click()");
+        $all = $client->waitFor('#list-tinhthanh')->filter('#list-tinhthanh')->text();
+        $data = array_chunk(explode("\n", $all), 7);
+        foreach($data as $value)
+        {
+            $location = new LocationCovid();
+            $location->fill(array_combine($location->getFields(), $location->get($data, $value[0])));
+            $location->save();
+        }
     }
 }

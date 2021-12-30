@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\HandleDataController;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\Models\CaseCovid;
 
 class GetCasesJob implements ShouldQueue
 {
@@ -31,7 +31,8 @@ class GetCasesJob implements ShouldQueue
      */
     public function handle()
     {
-        $job = new HandleDataController;
-        $job->saveCasesCovid();
+        $case = new CaseCovid();
+        $case->fill(array_combine($case->getFields(), $case->get()));
+        $case->save();
     }
 }
